@@ -19,7 +19,6 @@ export const workoutsReducer = (state, action) => {
     default:
         return state
   }
-
 }
 
 export const WorkoutContextProvider = ({ children }) => {
