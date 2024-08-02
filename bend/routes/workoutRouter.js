@@ -1,11 +1,14 @@
 const express = require('express')
-
-const router = express.Router();
+const requireAuth = require('../middleware/requireAuth')
 
 
 const { 
     createWorkout, getWorkout, getAllWorkouts, deleteWorkout, updateWorkout 
         } = require('../controllers/workoutController')
+
+const router = express.Router();
+// require authorization (for only logged in user)
+router.use(requireAuth)
 
 //to get all WO
 router.get('/', getAllWorkouts)

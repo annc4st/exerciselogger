@@ -4,11 +4,14 @@ const mongoose = require('mongoose')
 ///get all wo
 
 const getAllWorkouts = async (req, res) => {
-    const workouts = await WorkoutModel.find({}).sort({createdAt: -1})
+    // limit wo to users only
+    const user_id = req.user._id
+    const workouts = await WorkoutModel.find({user_id}).sort({createdAt: -1})
+    
     res.status(200).json(workouts)
 }
 
-// get a singlw wo
+// get a single wo
 const getWorkout = async (req, res) => {
     const {id}  = req.params;
 
@@ -49,7 +52,9 @@ const createWorkout = async (req, res) => {
 
 
     try {
-        const newWorkout = await WorkoutModel.create({title, load, reps })
+        //from middleware authRequired
+        const user_id = req.user._id
+        const newWorkout = await WorkoutModel.create({title, load, reps, user_id})
         res.status(200).json(newWorkout)
 
     } catch (error){
