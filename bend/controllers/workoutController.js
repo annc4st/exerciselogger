@@ -36,14 +36,14 @@ const createWorkout = async (req, res) => {
     let emptyFields = []
 
   if(!title){
-    emptyFields.push(title)
+    emptyFields.push('title')
   }
   if(!load){
-    emptyFields.push(load)
+    emptyFields.push('load')
   }
 
   if(!reps){
-    emptyFields.push(reps)
+    emptyFields.push('reps')
   }
 
   if (emptyFields.length >0 ){

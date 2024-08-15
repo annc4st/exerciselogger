@@ -10,7 +10,7 @@
 "password": "ASDasd1!"}
 
 ## New things learnt:
-- useReducer hooks
+- useReducer hook
 - creating custom hooks
 - separating user specific activity and created data from other users on FE
 
